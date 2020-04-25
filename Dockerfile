@@ -15,10 +15,12 @@ RUN apt-get update && \
     openssl
 
 RUN mkdir -p /opt/service
-COPY requirements.txt /opt/service
+COPY requirements-service.txt /opt/service
 COPY summarizer /opt/service/summarizer
-COPY tests /opt/service/tests
+COPY server.py /opt/service
 WORKDIR /opt/service
 
 RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements-service.txt
+
+ENTRYPOINT ["python3", "./server.py"]
