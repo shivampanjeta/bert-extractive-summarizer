@@ -124,7 +124,7 @@ ensureEC2ImageId();
 ensureBucket();
 
 spawnOrFail('sam', ['package', '--s3-bucket', `${bucket}`,
-                    '--template-file', 'templates/TextSummarizerCloudformationTemplate.yaml',
+                    '--template-file', 'template/TextSummarizerCloudformationTemplate.yaml',
                     '--output-template-file', 'build/packaged.yaml',
                     '--region',  `${region}`]);
 
